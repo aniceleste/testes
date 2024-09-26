@@ -6,13 +6,15 @@ public class SistemaDeCombustivel {
     private Double nivelDeCombustivel;
     private String marca;
     private boolean estado;
+    private Motor motor;
 
-    public SistemaDeCombustivel(String tipoDeCombustivel, double capacidade, Double nivelDeCombustivel, String marca, boolean estado) {
+    public SistemaDeCombustivel(String tipoDeCombustivel, double capacidade, Double nivelDeCombustivel, String marca, boolean estado, Motor motor) {
         this.tipoDeCombustivel = tipoDeCombustivel;
         this.capacidade = capacidade;
         this.nivelDeCombustivel = nivelDeCombustivel;
         this.marca = marca;
         this.estado = estado;
+        this.motor = motor;
     }
 
     

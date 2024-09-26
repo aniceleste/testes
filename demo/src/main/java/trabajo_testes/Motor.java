@@ -7,18 +7,29 @@ public class Motor {
     private double cilindrada;
     private String marca;
     private boolean estado;
+    private SistemaEletrico sistemaEletrico; // Dependência do sistema elétrico
+    private SistemaDeCombustivel sistemaDeCombustivel; // Dependência do sistema de combustível
 
-    public Motor(String tipo, int potencia, double cilindrada, String marca, boolean estado) {
+    public Motor(String tipo, int potencia, double cilindrada, String marca, boolean estado,
+            SistemaEletrico sistemaEletrico, SistemaDeCombustivel sistemaDeCombustivel) {
         this.tipo = tipo;
         this.potencia = potencia;
         this.cilindrada = cilindrada;
         this.marca = marca;
         this.estado = estado;
+        this.sistemaEletrico = sistemaEletrico; // Inicializa o sistema elétrico
+        this.sistemaDeCombustivel = sistemaDeCombustivel; // Inicializa o sistema de combustível
     }
 
     public void ligar() {
-        this.estado = true;
-        System.out.println("Motor ligado.");
+        if (sistemaEletrico.isEstado() && sistemaDeCombustivel.getNivelDeCombustivel() > 0) {
+            this.estado = true;
+            System.out.println("Motor ligado.");
+        } else if (!sistemaEletrico.isEstado()) {
+            System.out.println("Não é possível ligar o motor: sistema elétrico descarregado.");
+        } else {
+            System.out.println("Não é possível ligar o motor: nível de combustível insuficiente.");
+        }
     }
 
     public void desligar() {
@@ -70,6 +81,4 @@ public class Motor {
         this.estado = estado;
     }
 
-
 }
-

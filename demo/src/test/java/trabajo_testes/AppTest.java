@@ -16,10 +16,11 @@ class AppTest {
         Freios freios = new Freios("Disco", "Cerâmica", 14.0, "Brembo", 0.2);
         Luzes luzes = new Luzes("LED", 100, "Branca", true, "Philips");
         SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Hidráulico", true, "Plástico", 15.0, "TRW");
-        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", 50.0, 20.0, "Bosch", true);
-        Motor motor = new Motor("V8", 500, 4.0, "Ferrari", true);
+        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", 50.0, 20.0, "Bosch", true, null);
+        SistemaEletrico sistemaEletrico = new SistemaEletrico(12.0, 100.0, "Íon-Lítio", true, "Tesla", null);
+
+        Motor motor = new Motor("V8", 500, 4.0, "Ferrari", true, sistemaEletrico, sistemaDeCombustivel);
         SistemaDeTransmissao transmissao = new SistemaDeTransmissao("Automática", 6, "Aço", "ZF", true);
-        SistemaEletrico sistemaEletrico = new SistemaEletrico(12.0, 100.0, "Íon-Lítio", true, "Tesla");
         Pneus pneus = new Pneus("18 polegadas", "Esportivo", 32.0, "Pirelli", "Novo");
         Painel painel = new Painel("Digital", "LCD", true, "Bosch", false);
         Portas portas = new Portas(4, "Aço", "Preta", "Automática", "Fechada");
@@ -50,7 +51,7 @@ class AppTest {
 
     @Test
     public void testAbastecerTanque() {
-        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", 50.0, 5.0, "Bosch", true);
+        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", 50.0, 5.0, "Bosch", true, null);
 
         // Abasteciendo el carro
         sistemaDeCombustivel.abastecer(10.0);
@@ -65,7 +66,7 @@ class AppTest {
 
     @Test
     public void testTanqueVacio() {
-        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", 50.0, null , "Bosch", true);
+        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", 50.0, null , "Bosch", true, null);
 
         assertNull(sistemaDeCombustivel.getNivelDeCombustivel());
 
