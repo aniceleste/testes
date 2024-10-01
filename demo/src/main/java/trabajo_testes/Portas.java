@@ -17,8 +17,10 @@ public class Portas {
         }
 
         public void abrir() {
-            estado = "aberta";
-            System.out.println("Porta aberta.");
+                estado = "aberta";
+                System.out.println("Porta aberta.");
+            
+           
         }
 
         public void fechar() {

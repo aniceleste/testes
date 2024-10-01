@@ -1,44 +1,58 @@
 package trabajo_testes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class AppTest {
+    private Motor motor;
+    private SistemaEletrico sis;
+    private SistemaDeCombustivel com;
+    private Bancos ban;
+    private Carro car;
+    private Freios fre;
+    private Luzes luz;
+    private Painel pa;
+    private Pneus pn;
+    private Portas por;
+    private SistemaDeTransmissao tran;
+    private Suspensao sus;
+    private SistemaDeDirecao dire;
+
+    @BeforeEach
+        public void setUp(){
+            motor = new Motor("V8", 500, 4.0, "Ferrari", true);
+            com = new SistemaDeCombustivel("Gasolina", 50.0, 20.0, "Bosch", true, null);
+            sis = new SistemaEletrico(12.0, 100.0, "Íon-Lítio", true, "Tesla", null);
+            sus = new Suspensao("Independente", "Alumínio", 15.0, 7, "Bosch", null);
+            fre = new Freios("Disco", "Cerâmica", 14.0, "Brembo", 0.2);
+            luz = new Luzes("LED", 100, "Branca", true, "Philips");
+            dire = new SistemaDeDirecao("Hidráulico", true, "Plástico", 15.0, "TRW");
+            tran = new SistemaDeTransmissao("Automática", 6, "Aço", "ZF", true);
+            pn = new Pneus("18 polegadas", "Esportivo", 32.0, "Pirelli", "Novo");
+            pa = new Painel("Digital", "LCD", true, "Bosch", false);
+            por = new Portas(4, "Aço", "Preta", "Automática", "Fechada");
+            ban = new Bancos(5, "Couro", "Preto", "Esportivo", "Novo");
+            car = new Carro("Ferrari", 2022, "Vermelho", "ABC-1234", 0.0, true);
+
+        }
+
     @Test
-    public void testLigarCarro() {
-        // Creación de dependencias para el carro
-        Suspensao suspensao = new Suspensao("Independente", "Alumínio", 15.0, 7, "Bosch", null);
-        Freios freios = new Freios("Disco", "Cerâmica", 14.0, "Brembo", 0.2);
-        Luzes luzes = new Luzes("LED", 100, "Branca", true, "Philips");
-        SistemaDeDirecao sistemaDeDirecao = new SistemaDeDirecao("Hidráulico", true, "Plástico", 15.0, "TRW");
-        SistemaDeCombustivel sistemaDeCombustivel = new SistemaDeCombustivel("Gasolina", 50.0, 20.0, "Bosch", true, null);
-        SistemaEletrico sistemaEletrico = new SistemaEletrico(12.0, 100.0, "Íon-Lítio", true, "Tesla", null);
-
-        Motor motor = new Motor("V8", 500, 4.0, "Ferrari", true, sistemaEletrico, sistemaDeCombustivel);
-        SistemaDeTransmissao transmissao = new SistemaDeTransmissao("Automática", 6, "Aço", "ZF", true);
-        Pneus pneus = new Pneus("18 polegadas", "Esportivo", 32.0, "Pirelli", "Novo");
-        Painel painel = new Painel("Digital", "LCD", true, "Bosch", false);
-        Portas portas = new Portas(4, "Aço", "Preta", "Automática", "Fechada");
-        Bancos bancos = new Bancos(5, "Couro", "Preto", "Esportivo", "Novo");
-
-        // Creando el carro con todas las dependencias
-        Carro carro = new Carro("Ferrari", 2022, "Vermelho", "ABC-1234", 0.0,
-                suspensao, freios, luzes, sistemaDeDirecao, sistemaDeCombustivel,
-                motor, transmissao, sistemaEletrico, pneus, painel, portas, bancos);
-
-        // Probando el método para encender el carro
-        carro.ligar();
-
-        // Assertions para verificar que el carro se ha encendido correctamente
-        assertFalse(motor.verificarEstado().contains("funcionando"), "El motor debería estar encendido.");
-        assertTrue(luzes.verificarEstado().contains("ligadas"), "Las luces deberían estar encendidas.");
-        assertTrue(sistemaEletrico.verificarBateria().contains("funcionando"), "La batería debería estar funcionando.");
+    public void Testeligarcar() {
+        car.ligar(motor,sis,com);
+        assertTrue(car.isEstado());
     }
+
+@Test
+public void testligar(){
+    motor.ligar(sis, com);
+    assertTrue(motor.isEstado());
+}
+
 
     @Test
     public void testBanco(){

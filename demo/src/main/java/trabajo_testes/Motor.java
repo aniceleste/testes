@@ -10,19 +10,17 @@ public class Motor {
     private SistemaEletrico sistemaEletrico; // Dependência do sistema elétrico
     private SistemaDeCombustivel sistemaDeCombustivel; // Dependência do sistema de combustível
 
-    public Motor(String tipo, int potencia, double cilindrada, String marca, boolean estado,
-            SistemaEletrico sistemaEletrico, SistemaDeCombustivel sistemaDeCombustivel) {
+    public Motor(String tipo, int potencia, double cilindrada, String marca, boolean estado) {
         this.tipo = tipo;
         this.potencia = potencia;
         this.cilindrada = cilindrada;
         this.marca = marca;
         this.estado = estado;
-        this.sistemaEletrico = sistemaEletrico; // Inicializa o sistema elétrico
-        this.sistemaDeCombustivel = sistemaDeCombustivel; // Inicializa o sistema de combustível
+        
     }
 
-    public void ligar() {
-        if (sistemaEletrico.isEstado() && sistemaDeCombustivel.getNivelDeCombustivel() > 0) {
+    public void ligar(SistemaEletrico sis, SistemaDeCombustivel com) {
+        if (sis.getVoltagem()>=12 && com.getNivelDeCombustivel() > 0 && sis.isEstado()==true) {
             this.estado = true;
             System.out.println("Motor ligado.");
         } else if (!sistemaEletrico.isEstado()) {

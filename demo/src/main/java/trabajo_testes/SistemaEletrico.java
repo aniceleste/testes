@@ -20,7 +20,7 @@ public class SistemaEletrico {
 
     public void ligarMotor() {
         if (motor != null) {
-            motor.ligar();
+            //motor.ligar();
         } else {
             System.out.println("Não há motor associado.");
         }
