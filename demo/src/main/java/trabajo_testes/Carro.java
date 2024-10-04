@@ -7,7 +7,7 @@ public class Carro {
     private String placa;
     private double quilometragem;
     private boolean estado;
-    // Constructor
+    
     public Carro(String marca, int ano, String cor, String placa, double quilometragem, boolean estado) {
         this.marca = marca;
         this.ano = ano;

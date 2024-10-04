@@ -7,10 +7,10 @@ public class Suspensao {
     private double altura;
     private int numComponentes;
     private String fabricante;
-    private Object amortecedor; // Cambia Object por el tipo adecuado si es necesario
+    private Object amortecedor;
 
-    // Constructor
-    public Suspensao(String tipo, String material, double altura, int numComponentes, String fabricante, Object amortecedor) {
+    public Suspensao(String tipo, String material, double altura, int numComponentes, String fabricante,
+            Object amortecedor) {
         this.tipo = tipo;
         this.material = material;
         this.altura = altura;
@@ -19,19 +19,19 @@ public class Suspensao {
         this.amortecedor = amortecedor;
     }
 
-    // Método para ajustar la altura de la suspensión
-    public void ajustarAltura(double novaAltura) {
-        this.altura = novaAltura;
+    public void ajustarAltura(SistemaEletrico sis, double altura) {
+        if(sis.isEstado() == true){
+            this.altura = altura;
+        }
+        
     }
 
-    // Método para obtener la altura actual
     public double getAltura() {
         return this.altura;
     }
 
-    // Método para verificar el estado de la suspensión
     public String verificarEstado() {
-        return "Estado da suspensão: OK"; // Ajusta este mensaje según sea necesario
+        return "Estado da suspensão: OK"; 
     }
 
     public String getTipo() {
@@ -73,6 +73,5 @@ public class Suspensao {
     public void setAmortecedor(Object amortecedor) {
         this.amortecedor = amortecedor;
     }
-
 
 }

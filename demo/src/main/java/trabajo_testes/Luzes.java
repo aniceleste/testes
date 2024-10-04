@@ -5,7 +5,7 @@ public class Luzes {
     private String tipo;
     private int intensidade;
     private String cor;
-    private boolean estado; // True para ligadas, False para desligadas
+    private boolean estado; 
     private String modelo;
 
     public Luzes(String tipo, int intensidade, String cor, boolean estado, String modelo) {
@@ -75,5 +75,19 @@ public class Luzes {
         this.modelo = modelo;
     }
 
+    public void ligar(SistemaEletrico sistemaeletrico) {
+        if(sistemaeletrico.getVoltagem()>=12){
+            estado = true;
+            System.out.println("Luzes ligadas!");
+        }
+        else{
+            System.out.println("Nao foi possivel ligar");
+        }
+    }
+
+    public void desligaLuzes(SistemaEletrico sistemaEletrico) {
+        System.out.println("Luzes desligadas!");
+        estado = false;
+    }
 
 }

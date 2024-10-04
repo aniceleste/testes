@@ -23,13 +23,13 @@ public class SistemaDeCombustivel {
         return nivelDeCombustivel;
     }
 
-    public void abastecer(double quantidade) {
+    public void abastecer(Motor motor, SistemaDeCombustivel com, double quantidade) {
+        if(motor.isEstado() == false && com.getNivelDeCombustivel() < 50  )
         this.nivelDeCombustivel += quantidade;
         System.out.println("Abastecido com: " + quantidade + " litros. Nível atual: " + nivelDeCombustivel);
     }
 
 
-    // Getters e Setters (omitidos para brevidade)
 
     public String getTipoDeCombustivel() {
         return tipoDeCombustivel;
@@ -49,7 +49,7 @@ public class SistemaDeCombustivel {
 
     public Double getNivelDeCombustivel() {
         if (nivelDeCombustivel == null) {
-            return null;  // Retorna null se o nível de combustível for null
+            return null;  
         }
         return nivelDeCombustivel;
     }

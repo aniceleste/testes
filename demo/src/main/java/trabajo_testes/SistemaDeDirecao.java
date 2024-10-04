@@ -8,6 +8,7 @@ public class SistemaDeDirecao {
         private String material;
         private double relacao;
         private String marca;
+        private boolean automatico;
 
         public SistemaDeDirecao(String tipo, boolean assistido, String material, double relacao, String marca) {
             this.tipo = tipo;
@@ -69,6 +70,26 @@ public class SistemaDeDirecao {
         this.marca = marca;
     }
 
+    public void AtivarModoPilotoAutomatico(SistemaEletrico sistemaEletrico) {
+		if (sistemaEletrico.getVoltagem() >= 12) {
+			automatico = true;
+		}
+	}
+
+	public void DesativarModoPilotoAutomatico(SistemaEletrico sistemaEletrico) {
+		automatico = false;
+
+	}
+
+    public boolean isAutomatico() {
+        return automatico;
+    }
+
+    public void setAutomatico(boolean automatico) {
+        this.automatico = automatico;
+    }
+
+    
 
     }
 

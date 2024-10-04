@@ -5,26 +5,18 @@ public class SistemaEletrico {
     private double voltagem;
     private double capacidade;
     private String tipoDeBateria;
-    private boolean estado; // True para funcionando, False para descarregado
+    private boolean estado; 
     private String marca;
-    private Motor motor; // Composição
-
-    public SistemaEletrico(double voltagem, double capacidade, String tipoDeBateria, boolean estado, String marca, Motor motor) {
+ 
+    public SistemaEletrico(double voltagem, double capacidade, String tipoDeBateria, boolean estado, String marca) {
         this.voltagem = voltagem;
         this.capacidade = capacidade;
         this.tipoDeBateria = tipoDeBateria;
         this.estado = estado;
         this.marca = marca;
-        this.motor = motor; // Inicializa o motor
+        
     }
 
-    public void ligarMotor() {
-        if (motor != null) {
-            //motor.ligar();
-        } else {
-            System.out.println("Não há motor associado.");
-        }
-    }
 
     public String verificarBateria() {
         return estado ? "Bateria está funcionando." : "Bateria está descarregada.";

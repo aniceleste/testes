@@ -7,8 +7,8 @@ public class Motor {
     private double cilindrada;
     private String marca;
     private boolean estado;
-    private SistemaEletrico sistemaEletrico; // Dependência do sistema elétrico
-    private SistemaDeCombustivel sistemaDeCombustivel; // Dependência do sistema de combustível
+    private SistemaEletrico sistemaEletrico; 
+    private SistemaDeCombustivel sistemaDeCombustivel; 
 
     public Motor(String tipo, int potencia, double cilindrada, String marca, boolean estado) {
         this.tipo = tipo;

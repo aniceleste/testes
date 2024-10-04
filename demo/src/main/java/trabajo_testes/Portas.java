@@ -2,35 +2,34 @@ package trabajo_testes;
 
 public class Portas {
 
-        private int quantidade;
-        private String material;
-        private String cor;
-        private String tipo;
-        private String estado;
+    private int quantidade;
+    private String material;
+    private String cor;
+    private String tipo;
+    private boolean estado;
 
-        public Portas(int quantidade, String material, String cor, String tipo, String estado) {
-            this.quantidade = quantidade;
-            this.material = material;
-            this.cor = cor;
-            this.tipo = tipo;
-            this.estado = estado;
-        }
+    public Portas(int quantidade, String material, String cor, String tipo,boolean estado) {
+        this.quantidade = quantidade;
+        this.material = material;
+        this.cor = cor;
+        this.tipo = tipo;
+        this.estado = estado;
+    }
 
-        public void abrir() {
-                estado = "aberta";
-                System.out.println("Porta aberta.");
-            
-           
-        }
+    public void abrir() {
+        estado = true;
+        System.out.println("Porta aberta.");
 
-        public void fechar() {
-            estado = "fechada";
-            System.out.println("Porta fechada.");
-        }
+    }
 
-        public String verificarEstado() {
-            return "Estado da porta: " + estado;
-        }
+    public void fechar() {
+        estado = false;
+        System.out.println("Porta fechada.");
+    }
+
+    public String verificarEstado() {
+        return "Estado da porta: " + estado;
+    }
 
     public int getQuantidade() {
         return quantidade;
@@ -64,13 +63,24 @@ public class Portas {
         this.tipo = tipo;
     }
 
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    }
 
+    
 
+    public void abrir(Luzes sistemaLuzes, SistemaEletrico sistemaEletrico ){
+		estado = true;
+		sistemaLuzes.ligar(sistemaEletrico);
+	}
+
+	public void fechar(Luzes sistemaLuzes, SistemaEletrico sistemaEletrico){
+		estado = false;
+		sistemaLuzes.desligaLuzes(sistemaEletrico);
+	}
+    
+}
